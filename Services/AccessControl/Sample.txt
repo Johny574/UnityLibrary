@@ -1,0 +1,53 @@
+{
+  "$schema": "https://ugs-config-schemas.unity3d.com/v1/project-access-policy.schema.json",
+  "Statements": [
+    {
+      "Sid": "allow-player-economy-read-write",
+      "Effect": "Allow",
+      "Principal": "Player",
+      "Action": [
+        "Read",
+        "Write"
+      ],
+      "Resource": "urn:ugs:economy:/v1/projects/*",
+      "Version": "1.0.0"
+    },
+    {
+      "Sid": "allow-player-leaderboard-read-write",
+      "Effect": "Allow",
+      "Principal": "Player",
+      "Action": [
+        "Read",
+	      "Write"
+      ],
+      "Resource": "urn:ugs:leaderboard:/v1/projects/*",
+      "Version": "1.0.0"
+    },
+    {
+      "Sid": "allow-player-remote-read",
+      "Effect": "Allow",
+      "Principal": "Player",
+      "Action": [
+        "Read"
+      ],
+      "Resource": "urn:ugs:remote-config:/v1/projects/*",
+      "Version": "1.0.0"
+    },
+    {
+      "Sid": "allow-specific-cloud-code",
+      "Action": [ "Execute" ],
+      "Effect": "Allow",
+      "Principal": "Player",
+      "Resource": "urn:ugs:cloud-code:/v1/projects/*/modules/mySafeScript",
+      "Version": "1.0.0"
+    },
+    {
+      "Sid": "deny-other-cloud-code",
+      "Action": [ "Execute" ],
+      "Effect": "Deny",
+      "Principal": "Player",
+      "Resource": "urn:ugs:cloud-code:/v1/projects/*/modules/*",
+      "Version": "1.0.0"
+    }
+  ]
+}
